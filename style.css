@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+div#container {
+    margin-top: 5vh;
+    /* background-color: yellow; */
+    min-width: 60%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+div#text {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+div.subject {
+    padding: 5px;
+    /* background-color: green; */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+    border: 2px solid black
+}
+
+@media (max-width: 600px) {
+    div.subject {
+        flex-direction: column;
+    }
+}
+
+div.sr {
+    /* background-color: pink; */
+    width: 40px;
+    text-align: center;
+}
+
+.code {
+    /* background-color: brown; */
+}
+
+.mc {
+    /* background-color: purple; */
+}
+
+.gradebox {
+    /* background-color: tomato; */
+}
+
+.suBox {
+    display: flex;
+    /* background-color: white; */
+    width: 80px;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.remove {
+    width: 40px;
+}
+
+div#buttons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+button, input, select{
+    border: none;
+    padding: 2px 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+div#showGPA {
+    margin-top: 20px;
+}
