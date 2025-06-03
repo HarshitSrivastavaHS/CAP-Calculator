@@ -92,6 +92,7 @@ function remove(subject) {
     subject = subject.closest(".subject")
     subject.remove()
     renumber()
+    calculate()
 }
 
 function renumber() {
