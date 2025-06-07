@@ -37,7 +37,7 @@ div.subject {
     border: 2px solid black
 }
 
-@media (max-width: 600px) {
+@media (max-width: 775px) {
     div.subject {
         flex-direction: column;
     }
