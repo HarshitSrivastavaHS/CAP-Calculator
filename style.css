@@ -4,6 +4,7 @@
     font-family: sans-serif;
     box-sizing: border-box;
 }
+
 body {
     background-color: white;
     display: flex;
@@ -32,15 +33,26 @@ div#prev-gpa {
     flex-direction: row;
     justify-content: center;
 }
+div#gpa-container {
+    border: 2px solid black;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
 
 div.subject {
-    margin: 2px 0;
+    margin: 5px 0;
     padding: 5px;
     display: flex;
     flex-direction: row;
     gap: 10px;
     justify-content: space-between;
-    border: 2px solid black
+    border: 2px solid black;
+    border-radius: 12px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 775px) {
@@ -48,7 +60,7 @@ div.subject {
         flex-direction: column;
     }
 
-    div#prev-gpa {
+    div#gpa-container, div#prev-gpa {
         flex-direction: column;
         align-items: left;
         gap: 10px;
@@ -56,22 +68,10 @@ div.subject {
 }
 
 div.sr {
-    /* background-color: pink; */
     width: 40px;
     text-align: center;
 }
 
-.code {
-    /* background-color: brown; */
-}
-
-.mc {
-    /* background-color: purple; */
-}
-
-.gradebox {
-    /* background-color: tomato; */
-}
 
 .suBox {
     display: flex;
@@ -93,9 +93,38 @@ div#buttons {
 button, input, select{
     border: none;
     padding: 2px 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+input:focus {
+    border: 2px solid white;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+button:hover {
+    cursor: pointer;
     background-color: rgba(255, 255, 255, 0.8);
+}
+
+button#add-subject-button {
+    padding: 5px 20px;
+}
+
+button#add-subject-button:hover {
+    opacity: 0.8;
 }
 
 div#showGPA {
     margin-top: 20px;
+    padding: 5px 20px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    width: fit-content;
+    align-self: center;
+}
+
+div {
+    font-size: 15px;
 }

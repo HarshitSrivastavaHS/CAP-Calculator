@@ -25,13 +25,13 @@ function calculate() {
         if (sucheck.checked)
             continue
         let grade = parseFloat(grades[sub.querySelector(".grade").value])
-        let mc = parseInt(sub.querySelector(".mc").value)
+        let mc = parseInt(sub.querySelector(".mc").value) ? parseInt(sub.querySelector(".mc").value) : 0
         total += grade*mc
         totalMC += mc
     }
     let GPA = total/(totalMC>0?totalMC:1)
     let gpafield = document.getElementById("showGPA")
-    gpafield.innerText = `Calculated GPA: ${GPA.toFixed(2)}`
+    gpafield.innerText = `Calculated GPA: ${isNaN(GPA) ? "0.0" : GPA.toFixed(2)}`
 }
 
 function sucheck(checkbox) {
@@ -50,6 +50,11 @@ function sucheck(checkbox) {
 
 }
 
+backgroundColor = "#F8F9FA";
+//colors = ["#66c5cc", "#f6cf71", "#f89c74", "#dcb0f2", "#87c55f"]
+colors = ["#B2EBF2", "#FEEA9A", "#FFCCB6", "#E1BEE7", "#C8E6C9"];
+
+lastColor = -1;
 function addSubject() {
 
     const subjectDiv = document.createElement("div");
@@ -80,8 +85,14 @@ function addSubject() {
                 <div class="suBox"><label>S/U<input type="checkbox" class="suCheckbox" onchange="sucheck(this)"></label><span class="suGrade"></span></div>
                 <button class="remove" onclick="remove(this)">🗑</button>`
 
+    
+    randomColorNumber = Math.floor(Math.random() * colors.length);
+    divColor = colors[randomColorNumber] == lastColor ? colors[(randomColorNumber + 1) % colors.length] : colors[randomColorNumber];
+    subjectDiv.style.backgroundColor = divColor;
+    subjectDiv.style.borderColor = divColor;
     subjectContainer.appendChild(subjectDiv);
     attachListeners(subjectDiv);
+    lastColor = divColor;
 }
 
 function attachListeners(subjectDiv) {
@@ -106,6 +117,12 @@ function renumber() {
 
 window.onload = ()=>{
         addSubject()
-        document.getElementById("gpa-input").addEventListener("change", calculate)
-        document.getElementById("mc-input").addEventListener("change", calculate)
+        document.getElementById("gpa-container").style.backgroundColor = colors[0];
+        document.getElementById("gpa-container").style.borderColor = colors[0];
+        document.getElementById("gpa-input").addEventListener("change", calculate);
+        document.getElementById("mc-input").addEventListener("change", calculate);
+        document.body.style.backgroundColor = backgroundColor;
+        document.getElementById("add-subject-button").style.backgroundColor = colors[3];
+        document.getElementById("showGPA").style.backgroundColor = colors[4];
+        calculate();
 }

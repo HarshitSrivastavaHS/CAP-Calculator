@@ -16,17 +16,19 @@
     <div id="container">
         <div id="text"><h1>NUS GPA Calculator</h1></div>
         <div id="prev-gpa">
-            <label for="gpa-input">Previous GPA:</label>
-            <input type="number" id="gpa-input" step="0.01" min="0" max="5" value="0.00">
-            <label for="mc-input">Total MCs Completed:</label>
-            <input type="number" id="mc-input" step="1" min="0" value="0">
+            <div id="gpa-container">
+                <label for="gpa-input">Previous GPA:</label>
+                <input type="number" id="gpa-input" step="0.01" min="0" max="5" value="0.00">
+                <label for="mc-input">Total MCs Completed:</label>
+                <input type="number" id="mc-input" step="1" min="0" value="0">
+            </div>
         </div>
-        
+
         <div id="subjects">
         
         </div>
-        <div id="buttons"><button onclick="addSubject()">Add Subject</button></div>
-        <div id="showGPA">Calculated GPA: NaN</div>
+        <div id="buttons"><button onclick="addSubject()" id="add-subject-button">Add Subject</button></div>
+        <div id="showGPA">Calculated GPA: 0.0</div>
     </div>
     
 </body>
