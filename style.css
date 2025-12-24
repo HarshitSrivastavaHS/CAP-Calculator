@@ -98,6 +98,10 @@ button, input, select{
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
+input[type="checkbox"] {
+    scale: 1.2; 
+}
+
 input:focus {
     border: 2px solid white;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
@@ -127,4 +131,15 @@ div#showGPA {
 
 div {
     font-size: 15px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield; /* For Firefox */
+  text-align: center; /* Makes the number look better in the small box */
 }

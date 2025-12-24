@@ -82,7 +82,7 @@ function addSubject() {
                     </select>
                     </label>
                 </div>
-                <div class="suBox"><label>S/U<input type="checkbox" class="suCheckbox" onchange="sucheck(this)"></label><span class="suGrade"></span></div>
+                <div class="suBox"><label>S/U <input type="checkbox" class="suCheckbox" onchange="sucheck(this)"></label><span class="suGrade"></span></div>
                 <button class="remove" onclick="remove(this)">🗑</button>`
 
     
@@ -90,12 +90,20 @@ function addSubject() {
     divColor = colors[randomColorNumber] == lastColor ? colors[(randomColorNumber + 1) % colors.length] : colors[randomColorNumber];
     subjectDiv.style.backgroundColor = divColor;
     subjectDiv.style.borderColor = divColor;
+    subjectDiv.querySelector(".suCheckbox").style.accentColor = divColor;
     subjectContainer.appendChild(subjectDiv);
     attachListeners(subjectDiv);
     lastColor = divColor;
 }
 
 function attachListeners(subjectDiv) {
+    const mcInput = subjectDiv.querySelector(".mc");
+    
+    mcInput.addEventListener("input", function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+        calculate(); 
+    });
+
     subjectDiv.querySelector(".mc").addEventListener("change", calculate);
     subjectDiv.querySelector(".grade").addEventListener("change", calculate);
     subjectDiv.querySelector(".suCheckbox").addEventListener("change", calculate);
@@ -119,10 +127,39 @@ window.onload = ()=>{
         addSubject()
         document.getElementById("gpa-container").style.backgroundColor = colors[0];
         document.getElementById("gpa-container").style.borderColor = colors[0];
-        document.getElementById("gpa-input").addEventListener("change", calculate);
-        document.getElementById("mc-input").addEventListener("change", calculate);
+        attachListenersForPrevGPA();
         document.body.style.backgroundColor = backgroundColor;
         document.getElementById("add-subject-button").style.backgroundColor = colors[3];
         document.getElementById("showGPA").style.backgroundColor = colors[4];
         calculate();
+}
+
+function attachListenersForPrevGPA() {
+    const gpaInput = document.getElementById("gpa-input");
+    gpaInput.addEventListener("input", function() {
+        let targetValue = this.value;
+        let value = targetValue.replace(/[^0-9.]/g, '');
+        const parts = value.split('.');
+        if (parts.length > 2) {
+            value = parts[0] + '.' + parts.slice(1).join('');
+        }
+        if (parts[1] && parts[1].length > 2) {
+            value = parts[0] + '.' + parts[1].slice(0, 2);
+        }
+        if (value !== "" && value !== ".") {
+            if (parseFloat(value) > 5) {
+                value = "5";
+            }
+        }   
+        this.value = value;
+    });
+
+    const mcInput = document.getElementById("mc-input");
+    mcInput.addEventListener("input", function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+        calculate(); 
+    });
+
+    gpaInput.addEventListener("change", calculate);
+    mcInput.addEventListener("change", calculate);
 }
