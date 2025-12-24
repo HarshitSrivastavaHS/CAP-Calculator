@@ -120,7 +120,7 @@ button#add-subject-button:hover {
     opacity: 0.8;
 }
 
-div#showGPA {
+div.result {
     margin-top: 20px;
     padding: 5px 20px;
     border-radius: 12px;

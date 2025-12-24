@@ -16,8 +16,8 @@ const grades = {
 
 function calculate() {
     let subjects = document.getElementsByClassName("subject")
-    let prevGPA = parseFloat(document.getElementById("gpa-input").value)
-    let prevMC = parseInt(document.getElementById("mc-input").value)
+    let prevGPA = parseFloat(document.getElementById("gpa-input").value) ? parseFloat(document.getElementById("gpa-input").value) : 0.0
+    let prevMC = parseInt(document.getElementById("mc-input").value) ? parseInt(document.getElementById("mc-input").value) : 0
     let total = 0.0 + prevGPA*prevMC;
     let totalMC = prevMC;
     for (let sub of subjects) {
@@ -32,6 +32,9 @@ function calculate() {
     let GPA = total/(totalMC>0?totalMC:1)
     let gpafield = document.getElementById("showGPA")
     gpafield.innerText = `Calculated GPA: ${isNaN(GPA) ? "0.0" : GPA.toFixed(2)}`
+
+    let totalMCField = document.getElementById("totalMC");
+    totalMCField.innerText = `Total Credits Taken: ${prevMC} + ${totalMC - prevMC} = ${totalMC}`;
 }
 
 function sucheck(checkbox) {
@@ -131,6 +134,7 @@ window.onload = ()=>{
         document.body.style.backgroundColor = backgroundColor;
         document.getElementById("add-subject-button").style.backgroundColor = colors[3];
         document.getElementById("showGPA").style.backgroundColor = colors[4];
+        document.getElementById("totalMC").style.backgroundColor = colors[1];
         calculate();
 }
 
