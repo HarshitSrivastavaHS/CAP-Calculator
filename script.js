@@ -95,6 +95,10 @@ function addSubject() {
     subjectDiv.style.borderColor = divColor;
     subjectDiv.querySelector(".suCheckbox").style.accentColor = divColor;
     subjectContainer.appendChild(subjectDiv);
+    colorForThisCard = colors[divColor]; 
+    checkbox = subjectDiv.querySelector(".suCheckbox");
+
+    checkbox.style.setProperty('--checked-color', colorForThisCard);
     attachListeners(subjectDiv);
     lastColor = divColor;
 }

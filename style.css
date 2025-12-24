@@ -96,6 +96,7 @@ button, input, select{
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    border-radius: 12px;
 }
 
 input[type="checkbox"] {
@@ -140,6 +141,50 @@ input::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-  -moz-appearance: textfield; /* For Firefox */
-  text-align: center; /* Makes the number look better in the small box */
+  -moz-appearance: textfield; 
+  text-align: center; 
+}
+
+.suCheckbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+}
+
+.suCheckbox:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.suCheckbox:checked {
+    background-color: var(--checked-color, #dcb0f2)
+}
+
+.suCheckbox::after {
+    content: '';
+    position: absolute;
+    display: none; 
+    left: 5px;
+    top: 3px;
+    width: 4px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.suCheckbox:checked::after {
+    display: block;
+}
+
+input:focus, button:focus, select:focus {
+    outline: none;
+    border: none
 }
