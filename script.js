@@ -16,8 +16,10 @@ const grades = {
 
 function calculate() {
     let subjects = document.getElementsByClassName("subject")
-    let total = 0.0;
-    let totalMC = 0;
+    let prevGPA = parseFloat(document.getElementById("gpa-input").value)
+    let prevMC = parseInt(document.getElementById("mc-input").value)
+    let total = 0.0 + prevGPA*prevMC;
+    let totalMC = prevMC;
     for (let sub of subjects) {
         let sucheck = sub.querySelector(".suCheckbox")
         if (sucheck.checked)
@@ -29,7 +31,7 @@ function calculate() {
     }
     let GPA = total/(totalMC>0?totalMC:1)
     let gpafield = document.getElementById("showGPA")
-    gpafield.innerText = `Calculated GPA: ${GPA}`
+    gpafield.innerText = `Calculated GPA: ${GPA.toFixed(2)}`
 }
 
 function sucheck(checkbox) {
@@ -104,4 +106,6 @@ function renumber() {
 
 window.onload = ()=>{
         addSubject()
+        document.getElementById("gpa-input").addEventListener("change", calculate)
+        document.getElementById("mc-input").addEventListener("change", calculate)
 }
